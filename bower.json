@@ -1,11 +1,11 @@
 {
-  "name": "sphinx-rtd-theme",
+  "name": "sphinx-rtd-theme-annotated",
   "version": "1.0",
-  "homepage": "https://github.com/snide/wyrm",
+  "homepage": "https://github.com/gregmuellegger/sphinx-rtd-theme-annotated",
   "authors": [
-    "Dave Snider <dave.snider@gmail.com>"
+    "Gregor Müllegger <gregor@muellegger.de>"
   ],
-  "description": "Sphinx theme for readthedocs.org.",
+  "description": "Sphinx theme with annotations about documentation quality, based upon the Read The Docs default theme.",
   "license": "MIT",
   "main": [
     "dist/**"

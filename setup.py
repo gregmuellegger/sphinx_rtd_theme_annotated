@@ -1,25 +1,25 @@
 # -*- coding: utf-8 -*-
-"""`sphinx_rtd_theme` lives on `Github`_.
+"""`sphinx_rtd_theme_annotated` lives on `Github`_.
 
-.. _github: https://www.github.com/snide/sphinx_rtd_theme
+.. _github: https://www.github.com/gregmuellegger/sphinx_rtd_theme_annotated
 
 """
 from setuptools import setup
-from sphinx_rtd_theme import __version__
+from sphinx_rtd_theme_annotated import __version__
 
 
 setup(
-    name='sphinx_rtd_theme',
+    name='sphinx_rtd_theme_annotated',
     version=__version__,
-    url='https://github.com/snide/sphinx_rtd_theme/',
+    url='https://github.com/gregmuellegger/sphinx_rtd_theme_annotated/',
     license='MIT',
-    author='Dave Snider',
-    author_email='dave.snider@gmail.com',
-    description='ReadTheDocs.org theme for Sphinx, 2013 version.',
+    author='Gregor Müllegger',
+    author_email='gregor@muellegger.de',
+    description='Sphinx theme with annotations about documentation quality, based upon the Read The Docs default theme.',
     long_description=open('README.rst').read(),
     zip_safe=False,
-    packages=['sphinx_rtd_theme'],
-    package_data={'sphinx_rtd_theme': [
+    packages=['sphinx_rtd_theme_annotated'],
+    package_data={'sphinx_rtd_theme_annotated': [
         'theme.conf',
         '*.html',
         'static/css/*.css',
