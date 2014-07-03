@@ -121,7 +121,11 @@
     </section>
 
   </div>
-  {% include "versions.html" %}
+
+  <div class="badges">
+    {% include "annotationsmenu.html" %}
+    {% include "versions.html" %}
+  </div>
 
   {% if not embedded %}
 
@@ -144,6 +148,7 @@
   {% if not READTHEDOCS %}
     <script type="text/javascript" src="{{ pathto('_static/js/theme.js', 1) }}"></script>
   {% endif %}
+  <script type="text/javascript" src="{{ pathto('_static/js/annotate.js', 1) }}"></script>
 
   {# STICKY NAVIGATION #}
   {% if theme_sticky_navigation %}
