@@ -1,53 +1,61 @@
 $.fn.showAnnotation = function () {
-    var $self = $(this);
+    $(this).each(function () {
+        var $self = $(this);
 
-    var annotations = $(this).attr('data-annotations');
-    if (!annotations) {
-        return;
-    }
-    annotations = JSON.parse(annotations);
-
-    var $annotations = $self.find('.annotations');
-    if ($annotations.length == 0) {
-        $annotations = $('<div class="annotations" />').appendTo($self);
-    }
-    $annotations.empty();
-
-    $.each(annotations, function (i, annotation) {
-        if (annotation.type == 'hint') {
-            $self.addClass('has-hints');
-            $('html').addClass('page-has-hints');
+        var annotations = $(this).attr('data-annotations');
+        if (!annotations) {
+            return;
         }
-        if (annotation.type == 'warning') {
-            $self.addClass('has-warnings');
-            $('html').addClass('page-has-warnings');
-        }
+        annotations = JSON.parse(annotations);
 
-        $annotations.append(
-            $('<div class="annotation" />')
-                .addClass('annotation-' + annotation.type)
-                .text(annotation.message));
+        var $annotations = $self.find('.annotations');
+        if ($annotations.length == 0) {
+            $annotations = $('<div class="annotations" />').appendTo($self);
+        }
+        $annotations.empty();
+
+        $.each(annotations, function (i, annotation) {
+            if (annotation.level == 'hint') {
+                $self.addClass('has-hints');
+                $('html').addClass('page-has-hints');
+            }
+            if (annotation.level == 'warning') {
+                $self.addClass('has-warnings');
+                $('html').addClass('page-has-warnings');
+            }
+
+            $annotations.append(
+                $('<div class="annotation" />')
+                    .addClass('annotation-' + annotation.level)
+                    .text(annotation.message));
+        });
     });
 
     // TODO: Check if there are global annotations somehow differently.
     $('html').addClass('page-has-global-annotations');
+
+    return this;
 };
 
-$.fn.addAnnotation  = function (type, message) {
-    var annotations = $(this).attr('data-annotations');
-    if (!annotations) {
-        annotations = [];
-    } else {
-        annotations = JSON.parse(annotations);
-    }
+$.fn.addAnnotation  = function (level, message) {
+    $(this).each(function () {
+        var annotations = $(this).attr('data-annotations');
+        if (!annotations) {
+            annotations = [];
+        } else {
+            annotations = JSON.parse(annotations);
+        }
 
-    annotations.push({
-        type: type,
-        message: message
+        annotations.push({
+            level: level,
+            message: message
+        });
+
+        $(this).attr('data-annotations', JSON.stringify(annotations));
+        $(this).showAnnotation();
     });
 
-    $(this).attr('data-annotations', JSON.stringify(annotations));
-    $(this).showAnnotation();
+    return this;
 };
 
 $(document).ready(function () {
