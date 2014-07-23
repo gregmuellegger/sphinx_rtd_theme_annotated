@@ -4603,6 +4603,12 @@ html:not(.page-hide-hints) .has-hints .annotations-toolbox .annotations-head .an
   padding: 5px;
 }
 
+.annotations .annotation {
+  font-size: 1rem;
+  font-family: "Lato", "proxima-nova", "Helvetica Neue", Arial, sans-serif;
+  font-weight: normal;
+}
+
 html.page-hide-warnings .has-warnings .annotation-warning {
   display: none !important;
 }
